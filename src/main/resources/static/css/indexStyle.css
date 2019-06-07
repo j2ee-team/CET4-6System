@@ -1,0 +1,155 @@
+*{
+    margin: 0px;
+}
+.top{
+    width: 70%;
+    margin: 0 auto;
+
+}
+a{
+    text-decoration: none;
+    color: #5e5e5e;
+
+}
+.logo{
+    font-weight:10px;
+    font-size: 30px;
+    border: 1px solid black;
+    border-radius:70%;
+    width: 100px;
+    height:50px;
+    text-align: center;
+    line-height:50px;
+}
+.header{
+    display: block;
+}
+.text,.logo{
+    display: inline-block;
+}
+
+.text{
+
+    margin:15px;
+    color:#666;
+}
+.contract {
+    float: right;
+
+
+}
+.contract p{
+    color: darkgray;
+    margin: 15px;
+}
+.contract span{
+    font-size: 24px;
+    font-weight: bold;
+    color: #666;
+
+}
+.nav{
+    width: 100%;
+    background-color:#ccc;
+
+}
+.nav ul{
+    width: 70%;
+    margin: 0 auto;
+    list-style: none;
+    height: 40px;
+}
+.nav ul li{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 15px;
+    width:100px;
+    height: 40px;
+    margin-right:10px;
+    text-align: center;
+    line-height: 40px;
+}
+.nav ul li:hover{
+    color: #ab4f92;
+}
+.middle{
+    background-color:#ab4f92;}
+.photo2{
+    width: 70%;
+    margin: 0 auto;
+}
+.bottom{
+    width: 75%;
+    margin: 0 auto;
+    clear:both;
+    overflow: auto;
+}
+.col-1,.col-2,.col-3{
+    width:25%;
+    float: left;
+
+}
+.col-1,.col-2{
+    margin-left:20px;
+    margin-top: 25px;
+}
+
+.col-1{
+    margin-top: 10px;
+}
+
+.bottom ul{
+    list-style: none;
+    margin-top: 20PX;
+}
+.bottom  ul li{
+    font-size: 20px;
+    width: 250px;
+    background-color: #e9e9e9;
+    margin-top: 10px;
+
+}
+.bottom ul li:hover,.bottom ul a:hover{
+    background-color:#ab4f92;
+    color: white;
+}
+.bottom a,.bottom p{
+    display: inline-block;
+}
+.col-3{
+    margin-left:30px;
+    margin-top:20px;
+    font-size: 12px;
+    line-height:2;
+    width: 370px;
+
+
+}
+.col-3 span{
+    color: red;
+    font-weight: bold;
+}
+.footer {
+    width: 75%;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+.p1,.p2,.p3{
+    text-align: center;
+}
+.p1{
+    font-weight: bold;
+    color: #666;
+    font-size: 14px;
+    line-height: 2em;
+}
+.p2{
+    font-size: 12px;
+    color: #666;
+
+}
+.p3{
+    color: red;
+    font-size: 12px;
+}
