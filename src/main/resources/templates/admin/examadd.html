@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="../../static/css/bootstrap.css" />
+<style type="text/css">
+    .head-portrait{
+        border-radius:50px;
+        float: right;
+        margin: -300px 35% 0 0;
+        width:100px;
+        height:100px ;
+    }
+    @media (max-width: 768px) {
+        .head-portrait{
+            border-radius:50px;
+            float: right;
+            margin: -300px 0 0 0;
+            width:100px;
+            height:100px ;
+        }
+    }
+</style>
+<body>
+<div class="container">
+    <form class="form-horizontal" th:action="@{/admin/addexam}" method="post" style="margin:20px 0 0 0%;">
+        <input type="hidden" name="_method" value="put" th:if="${exam!=null}">
+        <input type="hidden" name="examId" th:if="${exam!=null}" th:value="${exam.examId}"/>
+
+        <fieldset>
+            <div id="legend">
+                <legend class="">考试信息填写</legend>
+            </div>
+            <div class="control-group ">
+                <!-- Text input-->
+                <label class="control-label" for="input01">考点名称</label>
+                <div class="controls">
+                    <input type="text" name="examName" placeholder="请输入考点名称" class="input-xlarge"
+                           th:value="${exam!=null}?${exam.examName}">
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <div class="control-group">
+
+
+                <!-- Text input-->
+                <label class="control-label" for="input01">考点地址</label>
+                <div class="controls">
+                    <input type="text" name="examAddress" placeholder="placeholder" class="input-xlarge"
+                           th:value="${exam!=null}?${exam.examAddress}">
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="input01">考试时间</label>
+                <div class="controls">
+                    <input type="date" name="examTime" placeholder="placeholder" class="input-xlarge"
+                           th:value="${exam!=null}?${#dates.format(exam.examTime,'yyyy-MM-dd')}">
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <div class="control-group">
+
+                <!-- Select Basic -->
+                <label class="control-label label-position-left">考试等级</label>
+                <div class="controls">
+                    <select name="examLevel" class="input-xlarge">
+                        <option value="四级考试"  th:selected="${exam!=null}?${exam.examLevel}=='四级考试'">四级考试</option>
+                        <option value="六级考试"  th:selected="${exam!=null}?${exam.examLevel}=='六级考试'">六级考试</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="control-group">
+                <label class="control-label"></label>
+
+                <!-- Button -->
+                <div class="controls">
+                    <button type="submit" class="btn btn-success">提交</button>
+                    <button type="reset" class="btn btn-info">重置</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

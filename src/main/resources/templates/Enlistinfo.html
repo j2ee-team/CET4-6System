@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>考试报名</title>
+</head>
+<body>
+<form th:action="@{/updateInfo/updateMes}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="_method" value="put"/>
+    <input type="hidden" name="userMesId" th:value="${mes.userMesId}"/>
+    <input type="hidden" name="userName" th:value="${mes.userName}">
+    <table border="0px" width="600px" height="400px" cellpadding="0px" cellspacing="0px">
+        <tr height="40px">
+            <td colspan="2">
+                <font size="4"><b>考试信息填写</b></font>
+            </td>
+        </tr>
+        <tr>
+            <td><b>用户名</b></td>
+            <td><p th:text="${username}"></p></td>
+        </tr>
+        <tr>
+            <td><b>姓名</b></td>
+            <td><input type="text" name="userMesName" th:value="${mes.userMesName}"/></td>
+        </tr>
+
+        <tr>
+            <td><b>性别</b></td>
+            <td>
+                <input type="radio" name="userMesGender" value="1" th:checked="${mes.userMesGender==1}"/>男
+                <input type="radio" name="userMesGender" value="0" th:checked="${mes.userMesGender==0}"/>女
+            </td>
+        </tr>
+
+        <tr>
+            <td><b>身份证号码</b></td>
+            <td><input type="text" name="userMesCard" th:value="${mes.userMesCard}"/></td>
+        </tr>
+
+        <tr>
+            <td><b>出生日期</b></td>
+            <td><input type="date" name="userMesBirth" th:value="${#dates.format(mes.userMesBirth,'yyyy-MM-dd')}" size="30px"/></td>
+        </tr>
+
+        <tr>
+            <td><b>Email</b></td>
+            <td><input type="text" name="userMesEmail" th:value="${mes.userMesEmail}"/></td>
+        </tr>
+
+        <tr>
+            <td><b>照片上传</b></td>
+            <td><input type="file" name="picUp" multiple="multiple" /></td>
+            <td><img width="200px" height="200px" th:src="${mes.userMesPic}"></td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="更改"/>
+                <input type="reset" value="重置"/>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="../../static/css/bootstrap.css" />
+<style type="text/css">
+    .head-portrait{
+        border-radius:50px;
+        float: right;
+        margin: -300px 35% 0 0;
+        width:100px;
+        height:100px ;
+    }
+    @media (max-width: 768px) {
+        .head-portrait{
+            border-radius:50px;
+            float: right;
+            margin: -300px 0 0 0;
+            width:100px;
+            height:100px ;
+        }
+    }
+</style>
+<body>
+<div class="container">
+    <form class="form-horizontal" th:action="@{/admin/adduser}" method="post" style="margin:20px 0 0 0%;">
+        <input type="hidden" name="_method" value="put" th:if="${user!=null}">
+        <input type="hidden" name="examId" th:if="${user!=null}" th:value="${user.userId}"/>
+
+        <fieldset>
+            <div id="legend">
+                <legend class="">用户密码修改</legend>
+            </div>
+            <div class="control-group ">
+                <!-- Text input-->
+                <label class="control-label" for="input01">用户名</label>
+                <div class="controls">
+                    <div type="text"  class="input-xlarge" th:text="${user!=null}?${user.userName}"></div>
+                    <input type="hidden" name="userName" th:value="${user!=null}?${user.userName}">
+                </div>
+            </div>
+            <div class="control-group">
+
+                <!-- Text input-->
+                <label class="control-label" for="input01">请输入新密码</label>
+                <div class="controls">
+                    <input type="password" id="password1" name="userPassword" placeholder="请输入密码" class="input-xlarge">
+
+                </div>
+            </div>
+
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="input01">请再次输入密码</label>
+                <div class="controls">
+                    <input type="password" id="password2" placeholder="请再次输入密码" class="input-xlarge">
+                    <p class="help-block"></p>
+                </div>
+            </div>
+
+
+            <div class="control-group">
+                <label class="control-label"></label>
+                <!-- Button -->
+                <div class="controls">
+                    <button type="submit" class="btn btn-success" onclick="return check()">提交</button>
+                    <button type="reset" class="btn btn-info">重置</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript">
+    function check() {
+        var pass1 = document.getElementById('password1');
+        var pass2 = document.getElementById('password2');
+        if (pass1.value.trim() == ''||pass2.value.trim() == '') {
+            alert('请完整填写密码以及重复输入密码！');
+            pass1.focus();
+            return false;
+        }
+        if (pass1.value != pass2.value) {
+            alert('两次输入的密码不相同！');
+            pass2.focus();
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

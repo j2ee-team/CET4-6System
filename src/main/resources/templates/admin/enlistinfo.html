@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>四六级报名后台管理系统</title>
+    <!--TITLE ICON-->
+    <!--<link rel="icon" href="../../img/viswust.titile_logo.ico" type="image/x-icon" />-->
+
+    <!--CSS STYLE-->
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/adminstyle.css" />
+
+    <!--JAVASCRIPT-->
+    <script src="../../static/js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../static/js/admintopnav.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!--Home Section-->
+<section id="home" class="home"></section>
+<!--End of Home section-->
+
+<section class="content_bg">
+    <div class="container-fluid">
+        <div class="content_bg_box row">
+            <div class="col-sm-2 col-md-2 col-lg-1 content_bg_boxleft" >
+                <nav>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li role="presentation"><a th:href="@{/admin/studentinfo}">
+                            <div class="trangle_bule"></div>学生个人信息
+                        </a></li>
+                        <li role="presentation" class="active"><a th:href="@{/admin/enlistinfo}">
+                            <div class="trangle_bule"></div>报名表信息
+                        </a></li>
+                        <li role="presentation"><a th:href="@{/admin/examinfo}">
+                            <div class="trangle_bule"></div>考点信息
+                        </a></li>
+                        <li role="presentation"><a th:href="@{/admin/userinfo}">
+                            <div class="trangle_bule"></div>用户管理
+                        </a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-10 col-md-10 col-lg-11 content_bg_box_right">
+                <div class="container-fluid content">
+                    <h3 >学生报名表信息</h3>
+                    <hr/>
+                    <form th:action="@{/admin/findenlist}" method="post">
+                        <fieldset>
+                            <select name="level">
+                                <option value="所有">所有</option>
+                                <option value="四级考试">四级考试</option>
+                                <option value="六级考试">六级考试</option>
+                            </select>
+                            <input class="btn btn-success" type="submit" value="查询">
+                        </fieldset>
+                    </form>
+                    <table id="dataTable">
+                        <thead>
+                        <tr>
+                            <th width="5%">序号</th>
+                            <th width="10%">考生姓名</th>
+                            <th width="5%">考生编号</th>
+                            <th width="10%">是否支付</th>
+                            <th width="10%">考场编号</th>
+                            <th width="10%">考试等级</th>
+                            <!--<th width="5%">操作</th>-->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="enlist,index:${enlists}">
+                            <td width="5%" height="30px" th:text="${index.count}"></td>
+                            <td width="10%" th:text="${enlist.remark}"></td>
+                            <td width="5%"th:text="${enlist.userMesId}"></td>
+                            <td width="10%"th:text="${enlist.enlistIsPay}"></td>
+                            <td width="10%"th:text="${enlist.examId}"></td>
+                            <td width="10%"th:text="${enlist.enlistLevel}"></td>
+                            <!--<td>-->
+                            <!--<a class="btn btn-sm btn-info" th:href="@{/admin/addactive/}+${c.activityId}">修改</a>-->
+                            <!--<form th:action="@{/admin/activity/}+${c.activityId}" method="post">-->
+                            <!--<input type="hidden" name="_method" value="delete"/>-->
+                            <!--<button type="submit" value="删除" class="btn btn-sm "-->
+                            <!--onclick="return definedelete()">删除-->
+                            <!--</button>-->
+                            <!--</form>-->
+                            <!--</td>-->
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Footer section-->
+<section id="footer" class="footer sections"></section>
+<!--End of Footer section-->
+
+<script type="text/javascript">
+    function definedelete() {
+        like = window.confirm("确定删除此数据?");
+        if (like == true) {
+            return true;
+        } else
+            return false
+    }
+</script>
+</body>
+</html>

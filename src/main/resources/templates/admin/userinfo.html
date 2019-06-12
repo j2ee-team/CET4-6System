@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>四六级报名后台管理系统</title>
+    <!--TITLE ICON-->
+    <!--<link rel="icon" href="../../img/viswust.titile_logo.ico" type="image/x-icon" />-->
+
+    <!--CSS STYLE-->
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/adminstyle.css" />
+
+    <!--JAVASCRIPT-->
+    <script src="../../static/js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../static/js/admintopnav.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!--Home Section-->
+<section id="home" class="home"></section>
+<!--End of Home section-->
+
+<section class="content_bg">
+    <div class="container-fluid">
+        <div class="content_bg_box row">
+            <div class="col-sm-2 col-md-2 col-lg-1 content_bg_boxleft" >
+                <nav>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li role="presentation"><a th:href="@{/admin/studentinfo}">
+                            <div class="trangle_bule"></div>学生个人信息
+                        </a></li>
+                        <li role="presentation"><a th:href="@{/admin/enlistinfo}">
+                            <div class="trangle_bule"></div>报名表信息
+                        </a></li>
+                        <li role="presentation"><a th:href="@{/admin/examinfo}">
+                            <div class="trangle_bule"></div>考点信息
+                        </a></li>
+                        <li role="presentation" class="active"><a th:href="@{/admin/userinfo}">
+                            <div class="trangle_bule"></div>用户管理
+                        </a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-10 col-md-10 col-lg-11 content_bg_box_right">
+                <div class="container-fluid content">
+                    <h3 >报名学生信息</h3>
+                    <hr/>
+                    <form  th:action="@{/admin/finduser}" method="post">
+                        <fieldset>
+                            <input type="text" placeholder="请输入查询内容" name="mesStr">
+                            <button type="submit" value="查询" class="btn btn-success">查询</button>
+                            <!--<a class="btn btn-primary" href="/admin/activity" th:href="@{/admin/addexam}">新增</a>-->
+                        </fieldset>
+                    </form>
+                    <table id="dataTable">
+                        <thead>
+                        <tr>
+                            <th width="5%">序号</th>
+                            <th width="10%">用户名</th>
+                            <!--<th width="10%">用户密码</th>-->
+                            <th width="10%">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="user,index:${users}">
+                            <td width="5%" height="30px" th:text="${index.count}"></td>
+                            <td width="10%"th:text="${user.userName}"></td>
+                            <!--<td width="10%" type="password"  th:text="${user.userPassword}"></td>-->
+                            <td width="10%">
+                            <a class="btn btn-sm btn-info" th:href="@{/admin/adduser/}+${user.userId}">修改</a>
+                            <form th:action="@{/admin/user/}+${user.userId}" method="post">
+                            <input type="hidden" name="_method" value="delete"/>
+                            <button type="submit" value="删除" class="btn btn-sm "
+                            onclick="return definedelete()">删除
+                            </button>
+                            </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Footer section-->
+<section id="footer" class="footer sections"></section>
+<!--End of Footer section-->
+
+<script type="text/javascript">
+    function definedelete() {
+        like = window.confirm("确定删除此数据?");
+        if (like == true) {
+            return true;
+        } else
+            return false
+    }
+</script>
+</body>
+</html>

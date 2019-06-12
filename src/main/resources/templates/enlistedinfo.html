@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>报名结果查询</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Custom Theme files -->
+    <link href="../static/css/style1.css" rel="stylesheet" type="text/css" media="all"/>
+    <!-- //Custom Theme files -->
+    <link rel="stylesheet" href="../static/css/font-awesome.css">
+    <!-- Font-Awesome-Icons-CSS -->
+    <!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+          rel="stylesheet">
+    <!-- //web font -->
+</head>
+
+<body>
+<!-- main -->
+<div class="main-agileits">
+    <h1>报名结果查询
+        <img src="../static/images/logo.png" alt="">
+    </h1>
+    <div class="register-form">
+        <form action="/" method="get">
+                <div type="text" th:if="${point!=null}" th:text="${point!=null}?${point}"></div>
+
+                <div class="styled-input">
+                    <div type="text" name="name" th:text="${mes!=null}?'姓名：'+${mes.userMesName}"></div>
+                </div>
+
+                <div class="styled-input">
+                    <div type="text" name="name" th:if="${mes!=null}" th:text="${mes.userMesGender==1}?'性别：男':'性别：女'"></div>
+                </div>
+                <!--身份证信息-->
+                <div class="styled-input">
+                    <div type="text" name="email" th:text="${mes!=null}?'身份证号码：'+${mes.userMesCard}"></div>
+                </div>
+                    <div class="styled-input">
+                        <div type="text" th:text="${mes!=null}?'联系电话：'+${mes.userMesTel}"></div>
+                    </div>
+
+                    <div class="styled-input">
+                        <div type="text" th:text="${mes!=null}?'电子邮箱：'+${mes.userMesEmail}">
+                        </div>
+                    </div>
+
+                    <div class="styled-input">
+                        <div type="text" th:text="${enlist!=null}?'考试等级：'+${enlist.enlistLevel}">
+                        </div>
+                    </div>
+
+            <div class="styled-input">
+                <div type="text" th:text="${enlist!=null}?'是否支付：'+${enlist.enlistIsPay}">
+                </div>
+            </div>
+
+                    <div class="styled-input">
+                        <div type="text" th:text="${exam!=null}?'考场名字：'+${exam.examName}">
+                        </div>
+                    </div>
+
+            <div class="styled-input">
+                <div type="text" th:text="${exam!=null}?'考场地址：'+${exam.examAddress}">
+                </div>
+            </div>
+
+            <div class="styled-input">
+                <div type="text" th:text="${exam!=null}?'考试开始时间：'+${exam.examTime}">
+                </div>
+            </div>
+                <input type="submit" value="确认并返回">
+        </form>
+    </div>
+</div>
+
+
+<!-- js -->
+<script src="../static/js/jquery-2.1.4.min.js"></script>
+
+<!-- Calendar -->
+<link rel="stylesheet" href="../static/css/jquery-ui.css"/>
+<script src="../static/js/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#datepicker,#datepicker1,#datepicker2,#datepicker3").datepicker();
+    });
+</script>
+<!-- //Calendar -->
+
+</body>
+
+</html>

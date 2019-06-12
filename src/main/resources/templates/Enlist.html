@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>考试报名信息填写</title>
+</head>
+<body>
+<form th:action="@{/enlist}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="userMesId" th:value="${mes.userMesId}"/>
+    <input type="hidden" name="enlistLevel" th:value="${level}">
+    <table border="0px" width="600px" height="400px" cellpadding="0px" cellspacing="0px">
+
+        <tr height="40px">
+            <td colspan="2">
+                <font size="4"><b>考试报名信息填写</b></font>
+            </td>
+        </tr>
+
+        <tr>
+            <td><b>姓名</b></td>
+            <td><div type="text" name="userMesName" th:text="${mes.userMesName}"></div></td>
+        </tr>
+
+        <tr>
+            <td><b>性别</b></td>
+            <td>
+                <div type="text" name="userMesGender"  th:text="${mes.userMesGender==1}?'男':'女'"></div>
+            </td>
+        </tr>
+
+        <tr>
+            <td><b>身份证号码</b></td>
+            <td><div type="text" name="userMesCard" th:text="${mes.userMesCard}"></div></td>
+        </tr>
+
+        <tr>
+            <td><b>出生日期</b></td>
+            <td><div type="text" name="userMesBirth" th:text="${#dates.format(mes.userMesBirth,'yyyy-MM-dd')}" size="30px"></div></td>
+        </tr>
+
+        <tr>
+            <td><b>就读大学</b></td>
+            <td><div type="text" name="userMesSchool" th:text="${mes.userMesSchool}"></div></td>
+        </tr>
+
+        <tr>
+            <td><b>联系电话</b></td>
+            <td><div type="text" name="userMesTel" th:text="${mes.userMesTel}"></div></td>
+        </tr>
+
+        <tr>
+            <td><b>Email</b></td>
+            <td><div type="text" name="userMesEmail" th:text="${mes.userMesEmail}"></div></td>
+        </tr>
+
+        <tr>
+            <td><b>个人照片</b></td>
+            <td><img width="200px" height="200px" th:src="${mes.userMesPic}"></td>
+        </tr>
+
+        <tr>
+            <td><b>考点选择</b></td>
+            <td>
+            <select name="examId">
+                <option th:each="exam,index:${exams}" th:value="${exam.examId}" th:text="${exam.examName}"></option>
+            </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="确认"/>
+                <a href="/" >取消</a>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
