@@ -1,0 +1,92 @@
+			body{
+			    font-family: Microsoft Yahei;
+			    font-size: 15px;
+				color: white;
+				opacity: 0.8;
+			}
+			
+			fieldset{    width: 780px; margin: auto;   }
+			
+			legend{    margin: auto;   }
+			
+			.item{
+			    height: 56px;
+			    line-height: 36px;
+			    margin: 10px;
+			}
+			
+			.item .item-label{
+			    float: left;
+			    width: 80px;
+			    text-align: right;
+			}
+			
+			.item-text{
+			    float: left;
+			    width: 300px;
+			    height: 16px;
+			    padding: 9px 25px 9px 5px;
+			    margin-left: 10px;
+			    border: 1px solid #ccc;
+			    overflow: hidden;
+			}
+			
+			.item-select{
+			    float: left;
+			    height: 34px;
+			    border: 1px solid #ccc;
+			    margin-left: 10px;
+			    font-size: 14px;
+			    padding: 6px 0px;
+			}
+			
+			.item-submit{
+			    margin-left: 88px;
+			}
+			
+			input.error{
+			    border: 1px solid #E6594E;
+			}
+			
+			input.highlight{
+			    border: 1px solid #7abd54;
+			}
+			
+			label.error,label.tip{
+			    float: left;
+			    height: 32px;
+			    line-height: 32px;
+			    font-size: 14px;
+			    text-align: left;
+			    margin-left: 5px;
+			    padding-left: 20px;
+			    color: red;
+			    background: url('error.png') no-repeat left center;
+			}
+			
+			label.tip{
+			    color: #aaa;
+			    background: url('tip.png') no-repeat left center;
+			}
+			
+			label.valid{
+			    background: url('valid.png') no-repeat left center;
+			    width: 32px;
+			}
+			#diqu_select{
+				float: left;
+			    width: 480px;
+			    height: 20px;
+			   /* padding: 9px 25px 9px 5px;*/
+			    margin-left: 10px;
+			   
+			}
+			#diqu_select label{
+				width:30px;
+				height:100%;
+				font-size: 15px;
+			}
+			#diqu_select select{
+				width:110px;
+				height:100%;
+			}

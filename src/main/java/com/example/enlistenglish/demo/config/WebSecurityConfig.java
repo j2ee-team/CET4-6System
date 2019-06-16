@@ -48,15 +48,15 @@ public class WebSecurityConfig extends WebMvcConfigurerAdapter{
         addInterceptor.excludePathPatterns("/error");
         addInterceptor.excludePathPatterns("/login**");
         addInterceptor.excludePathPatterns("/static/**");
-        addInterceptor.excludePathPatterns("/images/**");
-        addInterceptor.excludePathPatterns("/js/**");
-        addInterceptor.excludePathPatterns("/css/**");
-        addInterceptor.excludePathPatterns("/img/**");
-        addInterceptor.excludePathPatterns("/register/**");
+//        addInterceptor.excludePathPatterns("/images/**");
+//        addInterceptor.excludePathPatterns("/js/**");
+//        addInterceptor.excludePathPatterns("/css/**");
+//        addInterceptor.excludePathPatterns("/img/**");
+//        addInterceptor.excludePathPatterns("/register/**");
         addInterceptor.excludePathPatterns("/admin**");
         //以下为被拦截的部分
-        addInterceptor.addPathPatterns("/**");
-        addInterceptor.excludePathPatterns("/admin/**");
+//        addInterceptor.addPathPatterns("/**");
+//        addInterceptor.excludePathPatterns("/admin/**");
     }
 
 }

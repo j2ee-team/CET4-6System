@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,8 +23,8 @@
     <div class="content1">
         <h2>用户登录</h2>
         <form name="form" accept-charset="utf-8"  action="/loginVerify" method="post">
-            <input type="text" id="username" name="username" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'USERNAME';}">
-            <input type="password" id="password"  name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PASSWORD';}">
+            <input type="text" id="username" name="username" value="用户名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '用户名';}">
+            <input type="password" id="password"  name="password" value="密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '密码';}">
             <div class="button-row">
                 <input type="submit" class="sign-in" value="登录">
                 <input type="reset" class="reset" value="重置">
@@ -35,19 +35,31 @@
 
     <div class="content2">
         <h2>用户注册</h2>
-        <form>
-            <input type="text" name="userid" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'NAME AND SURNAME';}">
-            <input type="tel" name="usrtel" value="PHONE" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PHONE';}">
-            <input type="email" name="email" value="EMAIL ADDRESS" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'EMAIL ADDRESS';}">
-            <input type="password" name="psw" value="PASSWORD" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PASSWORD';}">
-            <input type="password" name="psw" value="PASSWORD" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PASSWORD';}">
-            <input type="submit" class="register" value="注册">
+        <form name="form" accept-charset="utf-8"  action="/register" method="post">
+            <input type="text" name="username" value="用户名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '用户名';}">
+            <input type="text" name="userMesName" value="考生姓名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '考生姓名';}">
+            <input type="hidden" name="userMesGender" value="1" >
+            <input type="tel" name="userMesTel" value="电话号码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '电话号码';}">
+            <input type="email" name="userMesEmail" value="电子邮箱" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '电子邮箱';}">
+            <input type="password" id="userpassword" name="password" value="密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PASSWORD';}">
+            <input type="password" id="confirmuserpassword" name="password1" value="请再次输入密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PASSWORD';}">
+            <input type="submit" class="register" value="注册" onsubmit="return confirmpassword()">
         </form>
     </div>
     <div class="clear"></div>
 </div>
 <div class="footer">
 </div>
-
 </body>
+<script type="text/javascript">
+    function confirmpassword() {
+        var userpassword = document.getElementById("userpassword");
+        var confirmuserpassword = document.getElementById("confirmuserpassword");
+        if (userpassword.value != confirmuserpassword.value) {
+            alert('两次输入密码不一致');
+            return false;
+        } else
+            return true;
+    }
+</script>
 </html>
