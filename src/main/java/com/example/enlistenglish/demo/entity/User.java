@@ -17,6 +17,9 @@ public class User {
     @Column(name = "user_password",length = 32)
     private String userPassword;//考生密码
 
+    @OneToOne
+    private User_mes userMes;
+
 
     public Long getUserId() {
         return userId;
@@ -41,4 +44,14 @@ public class User {
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
+
+    public User_mes getUserMes() {
+        return userMes;
+    }
+
+    public void setUserMes(User_mes userMes) {
+        this.userMes = userMes;
+    }
+
+
 }
