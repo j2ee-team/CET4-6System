@@ -12,6 +12,7 @@ import java.util.List;
 public interface ExamRepo extends CrudRepository<Exam,Long> {
     List<Exam> findExamByExamLevel(String level);
     Exam findByExamId(Long id);
+    List<Exam> findByExamName(String ExamName);
 
     //模糊查询考点
     @Query(value = "Select * from exam where concat(exam_address,exam_name,exam_level,exam_time) like %?%",nativeQuery = true)

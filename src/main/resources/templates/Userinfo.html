@@ -3,81 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <title>个人信息修改</title>
+    <style>
+        body{
+            font-family: Microsoft Yahei;
+            font-size: 15px;
+            background:url(../static/images/bg.jpg);
+            color: white;
+            opacity: 0.8;
+        }
+
+        fieldset{    width: 780px; margin: auto;   }
+
+        legend{    margin: auto; font-size: 20px;   }
+
+        .item{
+            height: 56px;
+            line-height: 36px;
+            margin: 10px;
+            z-index: 99;
+        }
+        select{
+            width:100px;
+        }
+    </style>
+    <!-- //register form popup-->
+
+    <!-- js -->
+    <script type="text/javascript" src="../static/js/jquery-2.1.4.min.js"></script>
+    <!-- //js -->
+
+    <!--popup-js-->
+    <script src="../static/js/jquery.magnific-popup.js" type="text/javascript"></script>
+    <script src="../static/js/sijibaoming.js"></script>
 </head>
 <body>
-<form th:action="@{/updateInfo/updateMes}" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="_method" value="put"/>
-    <input type="hidden" name="userMesId" th:value="${mes.userMesId}"/>
-    <input type="hidden" name="userName" th:value="${mes.userName}">
-    <table border="0px" width="600px" height="400px" cellpadding="0px" cellspacing="0px">
-        <tr height="40px">
-            <td colspan="2">
-                <font size="4"><b>个人信息修改</b></font>
-            </td>
-        </tr>
-        <tr>
-            <td><b>用户名</b></td>
-            <td><p th:text="${username}"></p></td>
-        </tr>
-        <!--<tr>-->
+<form id="form_1" th:action="@{/updateInfo/updateMes}" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend>个人信息查看</legend>
+        <input type="hidden" name="_method" value="put"/>
+        <input type="hidden" name="userMesId" th:value="${mes.userMesId}"/>
+        <input type="hidden" name="userName" th:value="${mes.userName}">
+        <table border="0px" width="600px" height="400px" cellpadding="0px" cellspacing="0px">
+            <!--<tr height="40px" class="item">
+                <td colspan="2" style="text-align: center;">
+                    <font size="6"><b>个人信息修改</b></font>
+                </td>
+            </tr>-->
+            <tr class="item">
+                <td><b>用户名</b></td>
+                <td><p th:text="${username}"></p></td>
+            </tr>
+            <!--<tr>-->
             <!--<td><b>密码</b></td>-->
             <!--<td><input type="password" name="password"/></td>-->
-        <!--</tr>-->
-        <!--<tr>-->
+            <!--</tr>-->
+            <!--<tr>-->
             <!--<td><b>确认密码</b></td>-->
             <!--<td><input type="password" name="rpassword"/></td>-->
-        <!--</tr>-->
-        <tr>
-            <td><b>姓名</b></td>
-            <td><input type="text" name="userMesName" th:value="${mes.userMesName}"/></td>
-        </tr>
+            <!--</tr>-->
+            <tr class="item">
+                <td><b>姓名</b></td>
+                <td><input type="text" name="userMesName" th:value="${mes.userMesName}"/></td>
+            </tr>
 
-        <tr>
-            <td><b>性别</b></td>
-            <td>
-                <input type="radio" name="userMesGender" value="1" th:checked="${mes.userMesGender==1}"/>男
-                <input type="radio" name="userMesGender" value="0" th:checked="${mes.userMesGender==0}"/>女
-            </td>
-        </tr>
+            <tr class="item">
+                <td><b>性别</b></td>
+                <td>
+                    <input style="width: 50px;" type="radio" name="userMesGender" value="1" th:checked="${mes.userMesGender==1}"/>男
+                    <input style="width: 50px;"  type="radio" name="userMesGender" value="0" th:checked="${mes.userMesGender==0}"/>女
+                </td>
+            </tr>
 
-        <tr>
-            <td><b>身份证号码</b></td>
-            <td><input type="text" name="userMesCard" th:value="${mes.userMesCard}"/></td>
-        </tr>
+            <tr class="item">
+                <td><b>身份证号码</b></td>
+                <td><input type="text" name="userMesCard" th:value="${mes.userMesCard}"/></td>
+            </tr>
 
-        <tr>
-            <td><b>出生日期</b></td>
-            <td><input type="date" name="userMesBirth" th:value="${#dates.format(mes.userMesBirth,'yyyy-MM-dd')}" size="30px"/></td>
-        </tr>
+            <tr class="item">
+                <td><b>出生日期</b></td>
+                <td><input type="date" name="userMesBirth" th:value="${#dates.format(mes.userMesBirth,'yyyy-MM-dd')}" size="30px"/></td>
+            </tr>
 
-        <tr>
-            <td><b>就读大学</b></td>
-            <td><input type="text" name="userMesSchool" th:value="${mes.userMesSchool}"/></td>
-        </tr>
+            <tr class="item">
+                <td><b>就读大学</b></td>
+                <!--<td><input type="text" name="userMesSchool" th:value="${mes.userMesSchool}"/></td>-->
+                <td id="diqu_select">
+                    <label>省/直辖市</label>
+                    <select id="se_1" name="userMesProvince" onchange="after_change()">
+<!--                        <option th:text="${mes.userMesProvince}" th:value="${mes.userMesProvince}"></option>-->
+                    </select>
+                    <label>高校名称</label>
+                    <select id="se_2" name="userMesSchool" th:text="${mes.userMesSchool}">
+<!--                        <option th:text="${mes.userMesSchool}" th:value="${mes.userMesSchool}"></option>-->
+                    </select>
+                </td>
+                <input type="hidden" id="gaoxiao" />
+            </tr>
 
-        <tr>
-            <td><b>联系电话</b></td>
-            <td><input type="text" name="userMesTel" th:value="${mes.userMesTel}"/></td>
-        </tr>
+            <tr class="item">
+                <td><b>联系电话</b></td>
+                <td><input type="text" name="userMesTel" th:value="${mes.userMesTel}"/></td>
+            </tr>
 
-        <tr>
-            <td><b>Email</b></td>
-            <td><input type="text" name="userMesEmail" th:value="${mes.userMesEmail}"/></td>
-        </tr>
+            <tr class="item">
+                <td><b>Email</b></td>
+                <td><input type="text" name="userMesEmail" th:value="${mes.userMesEmail}"/></td>
+            </tr>
 
-        <tr>
-            <td><b>照片上传</b></td>
-            <td><input type="file" name="picUp" multiple="multiple" /></td>
-            <td><img width="200px" height="200px" th:src="${mes.userMesPic}"></td>
-        </tr>
+            <tr class="item">
+                <td><b>照片上传</b></td>
+                <td><input type="file" name="picUp" multiple="multiple" /></td>
+                <!--<td><img width="200px" height="200px" th:src="${mes.userMesPic}">-->
+            </tr>
+            <tr style="display: block;" class="item">
+                <td><img width="200px" height="200px" th:src="${mes.userMesPic}"></td>
+            </tr>
+            <tr class="item">
+                <td>
+                    <input type="submit" value="更改"/>
+                </td>
+                <td>
+                    <input type="reset" value="重置"/>
+                    <input type="button" value="返回"/>
+                </td>
 
-        <tr>
-            <td colspan="2">
-                <input type="submit" value="更改"/>
-                <input type="reset" value="重置"/>
-            </td>
-        </tr>
-    </table>
+            </tr>
+        </table>
+    </fieldset>
 </form>
 </body>
 </html>

@@ -152,7 +152,17 @@ public class AdminController {
     public String addExam(Exam exam,Model model){
         String resultStr = "考点信息添加成功！";
         String hrefStr = "/admin/examinfo";
-        Exam examinfo = examRepo.save(exam);
+        Exam examinfo=null;
+        //尝试存储信息
+        try{
+            examinfo = examRepo.save(exam);
+        }catch (Exception e){
+            if (examinfo == null)
+                resultStr = "考点信息添加出错,请输入所有需要的参数！";
+            model.addAttribute("result", resultStr);
+            model.addAttribute("hre", hrefStr);
+            return "/success";
+        }
         if (examinfo == null)
             resultStr = "考点信息添加出错";
         model.addAttribute("result", resultStr);

@@ -33,6 +33,8 @@ public class User_mes {
     private String userMesEmail;//考生电子邮箱
     @Column(name ="username",length = 20)
     private String userName;//考生登录账号
+    @Column(name = "user_mes_province",length = 20)
+    private String userMesProvince;
     @Column(name = "user_mes_school",length = 100)
     private String userMesSchool;//考生就读大学
 
@@ -114,5 +116,13 @@ public class User_mes {
 
     public void setUserMesSchool(String userMesSchool) {
         this.userMesSchool = userMesSchool;
+    }
+
+    public String getUserMesProvince() {
+        return userMesProvince;
+    }
+
+    public void setUserMesProvince(String userMesProvince) {
+        this.userMesProvince = userMesProvince;
     }
 }
