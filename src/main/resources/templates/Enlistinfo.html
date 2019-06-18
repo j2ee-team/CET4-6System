@@ -3,28 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>考试报名</title>
+    <style>
+        body{
+            font-family: Microsoft Yahei;
+            font-size: 15px;
+            background:url(../static/images/bg.jpg);
+            color: white;
+            opacity: 0.8;
+        }
+
+        fieldset{    width: 780px; margin: auto;   }
+
+        legend{    margin: auto; font-size: 20px;   }
+
+        .item{
+            height: 56px;
+            line-height: 36px;
+            margin: 10px;
+            z-index: 99;
+        }
+        select{
+            width:100px;
+        }
+    </style>
 </head>
 <body>
 <form th:action="@{/updateInfo/updateMes}" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend>个人信息</legend>
     <input type="hidden" name="_method" value="put"/>
     <input type="hidden" name="userMesId" th:value="${mes.userMesId}"/>
     <input type="hidden" name="userName" th:value="${mes.userName}">
     <table border="0px" width="600px" height="400px" cellpadding="0px" cellspacing="0px">
-        <tr height="40px">
+        <tr height="40px" class="item">
             <td colspan="2">
                 <font size="4"><b>考试信息填写</b></font>
             </td>
         </tr>
-        <tr>
+        <tr class="item">
             <td><b>用户名</b></td>
             <td><p th:text="${username}"></p></td>
         </tr>
-        <tr>
+        <tr class="item">
             <td><b>姓名</b></td>
             <td><input type="text" name="userMesName" th:value="${mes.userMesName}"/></td>
         </tr>
 
-        <tr>
+        <tr class="item">
             <td><b>性别</b></td>
             <td>
                 <input type="radio" name="userMesGender" value="1" th:checked="${mes.userMesGender==1}"/>男
@@ -32,34 +57,35 @@
             </td>
         </tr>
 
-        <tr>
+        <tr class="item">
             <td><b>身份证号码</b></td>
             <td><input type="text" name="userMesCard" th:value="${mes.userMesCard}"/></td>
         </tr>
 
-        <tr>
+        <tr class="item">
             <td><b>出生日期</b></td>
             <td><input type="date" name="userMesBirth" th:value="${#dates.format(mes.userMesBirth,'yyyy-MM-dd')}" size="30px"/></td>
         </tr>
 
-        <tr>
+        <tr class="item">
             <td><b>Email</b></td>
             <td><input type="text" name="userMesEmail" th:value="${mes.userMesEmail}"/></td>
         </tr>
 
-        <tr>
+        <tr class="item">
             <td><b>照片上传</b></td>
             <td><input type="file" name="picUp" multiple="multiple" /></td>
             <td><img width="200px" height="200px" th:src="${mes.userMesPic}"></td>
         </tr>
 
-        <tr>
+        <tr class="item">
             <td colspan="2">
                 <input type="submit" value="更改"/>
                 <input type="reset" value="重置"/>
             </td>
         </tr>
     </table>
+        </fieldset>
 </form>
 </body>
 </html>
